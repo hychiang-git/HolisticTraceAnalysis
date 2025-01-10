@@ -92,7 +92,7 @@ def transform_correlation_to_index(
     # Initialize the index_correlaion to the fallback value first
     df["index_correlation"] = np.minimum(df["correlation"], 0)
     corr_df = df.loc[
-        df["correlation"].ne(-1), ["index", "correlation", "stream", "name"]
+        df["correlation"].ne(-1), ["index", "correlation", "stream", "name", "cat"]
     ]
 
     on_cpu = CPUOperatorFilter()(corr_df, symbol_table)

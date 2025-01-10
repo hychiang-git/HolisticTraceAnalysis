@@ -685,10 +685,11 @@ class Trace:
                 if include_last_profiler_step
                 else cpu_kernels[cpu_kernels["ts"] < last_profiler_start]
             )
-            filtered_gpu_kernels = gpu_kernels.merge(
-                cpu_kernels["correlation"], on="correlation", how="inner"
-            )
-            return pd.concat([filtered_gpu_kernels, cpu_kernels], axis=0)
+            # filtered_gpu_kernels = gpu_kernels.merge(
+            #     cpu_kernels["correlation"], on="correlation", how="inner"
+            # )
+            # return pd.concat([filtered_gpu_kernels, cpu_kernels], axis=0)
+            return pd.concat([gpu_kernels, cpu_kernels], axis=0)
 
         if not profiler_steps:
             logger.warning(
